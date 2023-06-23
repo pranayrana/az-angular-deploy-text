@@ -1,0 +1,7 @@
+<ng-container *ngIf="customer">
+
+    <div>Name : <span>{{customer?.name|trim:true }} </span></div>
+    <div>Email : <span>{{customer.email}} </span></div>
+    <div>Address : <span>{{customer.address | slice : 0 : 3 }}</span></div>
+    <a [routerLink] ="['edit', customer.id]" >Edit</a>
+</ng-container>

@@ -1,0 +1,25 @@
+<p>edit works!</p>
+
+<div>
+    <h4>Reactive approach</h4>
+
+    <form [formGroup]="customerForm" (ngSubmit)="submit($event)">
+        <div>Name : <input [class]="{'errorClass': nameCtrl?.errors && nameCtrl?.errors?.minlength }"
+                formControlName="name" /></div>
+        <div>Email : <input formControlName="email" /></div>
+        <input type="submit" [disabled]="customerForm.invalid" value="Submit" />
+    </form>
+    {{customerForm.invalid}}
+    {{nameCtrl?.errors | json}}
+</div>
+
+<div>
+    <h4>Template driven</h4>
+    <form #custTemplateFrom="ngForm"  (ngSubmit)="submit($event)">
+        <div>Name : <input type="text" #nameTC="ngModel" required minlength="3" name="name" [(ngModel)]="name" /></div>
+        <div>Email : <input type="text" name="email" [(ngModel)]="email"  /></div>
+        <input type="submit" [disabled]="custTemplateFrom.invalid" value="Submit" />
+    </form>
+    {{nameTC.errors | json}}
+    {{custTemplateFrom.value | json}}
+</div>

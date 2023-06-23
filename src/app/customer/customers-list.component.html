@@ -1,0 +1,8 @@
+<p>customers-list works!</p>
+<ng-container *ngIf=" customers$">
+    <ng-container *ngFor="let cust of customers$ | async">
+        <app-detail [customer]="cust"></app-detail>
+        <hr/>
+    </ng-container>
+    {{customers$ | async | json}}
+</ng-container>
